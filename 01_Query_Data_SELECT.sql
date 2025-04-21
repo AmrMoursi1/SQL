@@ -1,4 +1,4 @@
-* ==============================================================================
+/* ==============================================================================
    SQL SELECT Query
 -------------------------------------------------------------------------------
    This guide covers various SELECT query techniques used for retrieving, 
@@ -15,8 +15,9 @@
      8. TOP
      9. Combining Queries
 	 10. COOL STUFF - Additional SQL Features
-=================================================================================
-*/
+================================================================================= */
+
+
 
 /* ==============================================================================
    COMMENTS
@@ -30,11 +31,13 @@
    comment
 */
 
+
+
 /* ==============================================================================
    SELECT ALL COLUMNS
 =============================================================================== */
 
--- Retrieve All Custuomer Data
+-- Retrieve All Customer Data
 USe MyDatabase
 SELECT *
 FROM customers
@@ -44,19 +47,19 @@ SELECT *
 FROM orders
 
 /* ==============================================================================
-   SELECT FEW COLUMNS
+   SELECT A FEW COLUMNS
 =============================================================================== */
 
--- Retrieve each custommer's name, coutry, and score
+-- Retrieve each customer's name, country, and score
 SELECT 
-	first_name , 
-	country , 
+	first_name, 
+	country, 
 	score
 FROM customers
 /* ==============================================================================
    WHERE Claus- 
-   what is exatly WHERE, we use where in order to filter our data beasd on a condition
-   and any data filfil the condition gone show on the result
+   What exactly is WHERE? We use WHERE in order to filter our data based on a condition
+   and any data fulfills the condition will show in the result
    ** Score Higher than 500
    ** Country ='Egypt' 
    ** etc
@@ -79,13 +82,13 @@ WHERE country = 'Germany'
 
 /*=============================================================================== 
 ORDER BY 
-We use this kind of clous when we need to sort our data
-you have to decide on two mechanism either to sort your data 
+We use this kind of Clous when we need to sort our data
+You have to decide on two mechanisms, either to sort your data 
 
-ASC ascending from the lowest value to the highest value or 
-DESC descending from the hightst to the lowest
+ASC: ascending from the lowest value to the highest value, or 
+DESC: descending from the highest to the lowest
 
--- if you'r don't specify the mechanism the defult will be ASC
+-- If you don't specify the mechanism, the default will be ASC
 =============================================================================== */
 
 -- Retrieve all customers and sort the results by the highest score first
@@ -101,11 +104,11 @@ FROM customers
 ORDER BY  score ASC
 
 /* Retrieve all customers and 
-   sort the results by the country and then by the highest score. */
+   sort the results by country and then by the highest score. */
 
 SELECT *
 FROM customers 
-ORDER BY country ASC , score DESC
+ORDER BY country ASC, score DESC
 
 /* Retrieve the name, country, and score of customers 
    whose score is not equal to 0
@@ -152,12 +155,12 @@ GROUP BY country
 /*==============================================================================
 Having 
 Filter Aggregated Data
-Filter data after aggregation can be used only with GROUP BY
+Filtering data after aggregation can be used only with GROUP BY
 ============================================================================== */
--
--- Fina the average score for each country considering only customers withe a score not equal to 0 
+/*
+-- Find the average score for each country, considering only customers with a score not equal to 0 
 -- Return only those countries with an average greater than 420
--- Sort the results by the highest average score first.
+-- Sort the results by the highest average score first.*/
 
 SELECT 
 	country,
@@ -170,11 +173,11 @@ ORDER BY AVG(score) DESC
 
 /*==============================================================================
 DISTINCT
-Almost equle to UNIQE in Python
-Return Uninqe list of a column
+Almost equivalent to UNIQE in Python
+Return a unique list of a column
 ==============================================================================*/
 
--- Return unique list of all countries
+-- Return a unique list of all countries
 
 SELECT DISTINCT country 
 FROM customers
@@ -212,8 +215,7 @@ FROM orders
 ORDER BY order_date DESC
 LIMIT 2
 
--- Get the Two Most Oldest Orders
-
+-- Find the two oldest orders.
 SELECT *
 FROM orders
 ORDER BY order_date ASC
